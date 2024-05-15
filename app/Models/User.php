@@ -17,6 +17,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        
         'name',
         'email',
         'password',
@@ -44,4 +45,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function post(){
+        return $this->hasMany(Post::class);
+    }
+
 }
