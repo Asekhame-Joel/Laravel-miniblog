@@ -11,7 +11,7 @@
       
         @foreach($posts->skip(1) as $post)
         {{-- @dd($loop) --}}
-        <x-article-section :post="$post" class="{{ ($loop->index % 5) < 2 ? 'md:w-1/2' : 'md:w-1/3' }}"/>
+        <x-article-section :post="$post" class="{{ ($loop->index % 5) > 2 ? 'md:w-1/2' : 'md:w-1/3' }}"/>
             {{-- <x-article-section :post="$post" class="md:w-1/3"/> --}}
      
 @endforeach
