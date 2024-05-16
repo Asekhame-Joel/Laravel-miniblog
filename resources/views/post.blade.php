@@ -3,7 +3,7 @@
   <body class="bg-white font-family-karla">
     <x-nav/>
     <x-header/>
-    <x-entire_header :categories="$categories"/>
+    <x-entire_header/>
     
     <section class="w-full md:w-3/4 flex flex-col items-center px-3 mx-auto">
       <!-- Article -->
