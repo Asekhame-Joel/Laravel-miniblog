@@ -1,4 +1,6 @@
-   {{-- @props(['category']) --}}
+{{-- @props(['categories', 'currentCategory']) --}}
+
+<!-- Your component HTML here -->
    <!-- Topic Nav -->
    <nav class="w-full py-4 border-t border-b bg-gray-100" x-data="{ open: false }">
     <div class="block sm:hidden">
@@ -13,11 +15,20 @@
     
     <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
         <div class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
-      @foreach($categories as $category)
-            <a href="/categories/{{$category->slug}}" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">{{$category->name}}</a>
-       @endforeach
+            <a href="/" 
+                class="hover:bg-gray-400 rounded py-2 px-4 mx-2">
+                All
+             </a>
+            @foreach($categories as $category)
+                <a href="/categories/{{$category->slug}}" 
+                   class="hover:bg-gray-400 rounded py-2 px-4 mx-2
+                {{ request()->is('categories/'.$category->slug) ? 'bg-gray-400' : '' }}">
+                   {{ $category->name }}
+                </a>
+            @endforeach
         </div>
-       Search:  <input type="text" class="border border-gray-400 rounded py-2 px-4 mx-2">
-
+        
+        Search:  <input type="text" class="border border-gray-400 rounded py-2 px-4 mx-2">
     </div>
+    
 </nav>
