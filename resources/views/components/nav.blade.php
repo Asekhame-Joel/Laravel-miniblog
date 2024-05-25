@@ -3,8 +3,23 @@
 
        <nav>
             <ul class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
-                <li><a class="hover:text-gray-200 hover:underline px-4" href="#">Home</a></li>
-                <li><a class="hover:text-gray-200 hover:underline px-4" href="#">Login</a></li>
+             
+           @auth  
+           <li><a class="hover:text-gray-200 hover:underline px-4" href="#">Welcome {{auth()->user()->username}}</a></li>
+           <li><a class="hover:text-gray-200 hover:underline px-4" href="/">Home</a></li>
+           <form action="/logout" method="POST">
+            @csrf
+            <button class="hover:underline px-4">
+                Logout
+            </button>
+           </form>
+           @endauth
+
+             @guest   
+             <li><a class="hover:text-gray-200 hover:underline px-4" href="/register">Register</a></li>
+             <li><a class="hover:text-gray-200 hover:underline px-4" href="/login">Login</a></li>
+
+             @endguest
             </ul>
         </nav>
     </div>

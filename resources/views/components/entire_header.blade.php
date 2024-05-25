@@ -27,8 +27,27 @@
                 </a>
             @endforeach
         </div>
+{{-- 
+  <div class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
+            <a href="{{ url('/') }}" class="hover:bg-gray-400 rounded py-2 px-4 mx-2
+            {{ request()->is('/') ? '' : 'bg-gray-400' }}">
+            All
+        </a>
+            @foreach($categories as $category)
+            <a href="/?category={{ $category->slug }}" 
+                class="hover:bg-gray-400 rounded py-2 px-4 mx-2 
+                {{ request('category') === $category->slug ? 'bg-gray-400' : '' }}">
+                {{ $category->name }}
+             </a>
+              --}}
         
-        Search:  <input type="text" class="border border-gray-400 rounded py-2 px-4 mx-2">
+      <form action="" method="GET">
+        <div class="flex justify-center items-center mr-8">
+    <input type="text" name= "search" placeholder="find Something" class="border border-gray-400 rounded py-3 px-4 mx-2"
+     value="{{request('search')}}">
+    </div>
+</form>
+
     </div>
     
 </nav>

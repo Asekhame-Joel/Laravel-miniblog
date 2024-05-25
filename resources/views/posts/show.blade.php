@@ -10,8 +10,8 @@
       <article class="flex flex-col shadow my-4">
           <!-- Article Image -->
           <a href="#" class="hover:opacity-75">
-              <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=1">
-          </a>
+            <img src="../images/illustration-1.png">
+        </a>
           <div class="bg-white flex flex-col justify-start p-6">
               <a href="/categories/{{$post->category->slug}}" class="text-blue-700 text-sm font-bold uppercase pb-4">{{$post->category->name}}</a>
               <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">{{$post->title}}</a>
@@ -26,12 +26,9 @@
       
   </section>
 
-
-      <!-- Pagination -->
-  <div class="flex items-center py-8">
-      <!-- Pagination content here -->
-  </div>
-
+    <x-post-comment/>
+    <x-post-comment/>
+    <x-post-comment/>
 
 
 

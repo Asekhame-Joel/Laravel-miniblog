@@ -1,46 +1,38 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SessionsController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\RegisterController;
+
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
-Route::get('/', function () {
-       return view('posts', [
-        // 'posts' => Post::latest()->with('category', 'author')->get()
-        'posts' => Post::latest()->get(),
-        'categories' => Category::all()
+Route::get('/', [PostController::class, 'index']);
 
-    ]);
-});
+Route::get('posts/{post:slug}',[PostController::class, 'show']);
 
-Route::get('categories/{category:slug}', function (Category $category) {
-    return view('posts', [
-    //  'posts' => $category->post->load(['category', 'author'])
-    'posts' => $category->post,
-    'categories' => Category::all()
- ]);
-});
+Route::get('categories/{category:slug}', [CategoryController::class, 'allCategory']);
 
 Route::get('authors/{author:username}', function (User $author) {
-    return view('posts', [
+    return view('posts.index', [
     //  'posts' => $author->post->load(['category', 'author'])
-     'posts' => $author->post,
+     'posts' => $author->posts,
      'categories' => Category::all()
-
  ]);
 });
 
+Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
+Route::post('register', [RegisterController::class, 'store']);
+Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
-Route::get('posts/{post:slug}', function(Post $post){
-    //find a  post by its slug and pass it to the view
-    // $post = Post::findOrfail($post);
-    return view('post', [
-        'post' => $post,
-        'categories' => Category::all()
+Route::get('login', [SessionsController::class, 'create']);
+Route::post('login', [SessionsController::class, 'store']);
 
-        
-    ]);
 
-});
+
+
+

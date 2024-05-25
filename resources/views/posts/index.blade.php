@@ -1,8 +1,8 @@
 <x-layout>
+    <x-header/>
 
-    <body class="bg-white font-family-karla">
-        <x-nav/>
-        <x-header/>
+
+   
         <x-entire_header :categories="$categories"/>
         @if($posts->count())
         <x-featured_post :post="$posts[0]"/>
@@ -23,4 +23,10 @@
 </h1>
 
 @endif
+<div class="mb-5 mr-5 ml-5">
+
+    {{$posts->links()}}
+
+</div>
+
 </x-layout>
