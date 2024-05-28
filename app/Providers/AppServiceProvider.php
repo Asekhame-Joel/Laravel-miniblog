@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Model;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -12,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        Model::unguard();
     }
 
     /**

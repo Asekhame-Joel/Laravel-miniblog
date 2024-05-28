@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id');
+            // $table->unsignedBigInteger('post_id');
+            $table->foreignId('post_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('slug')->unique();
-            $table->string('title');
-            $table->text('excerpts');
+            // $table->unsignedBigInteger('user_id');
             $table->text('body');
             $table->timestamps();
-            $table->timestamp('published_at')->nullable();
+            // $table->foreign('post_id')->references('id')->on('posts')->cascadeOnDelete();
+            // $table->foreignId('post_id')->constrained()->cascadeOnDelete();
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('comments');
     }
 };

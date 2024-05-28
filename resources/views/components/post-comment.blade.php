@@ -1,33 +1,22 @@
-<section class="w-full md:w-3/4 flex flex-col items-end px-3 mx-auto">
-    <!-- Article -->
-    <article class="flex flex-col shadow my-4">
-        <!-- Article Image -->
-     
-        <div class="bg-gray-100 flex justify-start p-6 space-x-4">
-         
-      
-      <div class="px-2">    <a href="#" class="hover:opacity-75">
-            <img class="rounded-xl" src="https://i.pravatar.cc/100">
-        </a>
-      </div>
+@props(['comment'])
 
-        <div class="">
-            <div  class="text-sm font-bold hover:text-gray-700 mb-5">Joel Asekhame </>
-            <p class="text-sm pb-3 font-semibold hover:text-gray-800"> <time>Posted 1 day Ago</time>
+<article class="flex bg-gray-100 border border-gray-200 p-6 mt-6 mr-5  ml-5 rounded-xl space-x-4">
+    <div class="flex-shrink-0">
+        <img src="https://i.pravatar.cc/60?u={{ $comment->user_id }}" alt="" width="60" height="60" class="rounded-xl">
+    </div>
+
+    <div>
+        <header class="mb-4">
+            <h3 class="font-bold">{{ $comment->author->username }}</h3>
+
+            <p class="text-xs">
+                Posted
+                <time>{{ $comment->created_at }}</time>
             </p>
-            <div class="text-blue-700 text-sm font-bold uppercase pb-4 space-y-8">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</div>
-            <div>
-              <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
-                Post Comment
-              </button>    
-            </div>
+        </header>
 
-          </div>
-        </div>
-     
-        
-        
-    </article>
-    
-</section>
-
+        <p>
+            {{ $comment->body }}
+        </p>
+    </div>
+</article>

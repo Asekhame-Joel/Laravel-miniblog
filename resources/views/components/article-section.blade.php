@@ -11,7 +11,7 @@
                 
                 <a href="/posts/{{$post->slug}}" class="text-3xl font-bold hover:text-gray-700 pb-4">{{$post->title}}</a>
                 <p href="#" class="text-sm pb-3">
-                    By <a href="/authors/{{$post->author->username}}" class="font-semibold hover:text-gray-800">{{$post->author->name}}</a>, <time>{{$post->created_at->diffForHumans()}}</time>
+                    By <a href="/author/{{ $post->author->username ?? '' }}" class="font-semibold hover:text-gray-800">{{ $post->author->name ?? 'Unknown Author' }}</a>, <time>{{ $post->created_at->diffForHumans() }}</time>
                 </p>
                 <a href="/posts/{{$post->slug}}" class="pb-6">{{$post->excerpts}}</a>
                 <a href="/posts/{{$post->slug}}" class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a>

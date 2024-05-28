@@ -23,9 +23,8 @@ class PostFactory extends Factory
         return [
             'user_id' => User::factory(),
             'category_id' => Category::factory(),
+            
 //the about automatically creates a default user_id and category id to the post whenever the post is created
-
-
             'title' => $this->faker->sentence,
             'slug' => $this->faker->slug,
             'excerpts' => '<p>'. implode('</p><p>', $this->faker->paragraphs(2)) . '</p>',

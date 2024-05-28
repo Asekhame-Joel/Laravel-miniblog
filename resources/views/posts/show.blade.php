@@ -1,7 +1,6 @@
 <x-layout>
 
   <body class="bg-white font-family-karla">
-    <x-nav/>
     <x-header/>
     <x-entire_header :categories="$categories"/>
     
@@ -25,10 +24,16 @@
       </article>
       
   </section>
+  @auth
+  @include('posts.post-comment-form')
+  {{-- <x-post-comment-form/> --}}
+@endauth
 
-    <x-post-comment/>
-    <x-post-comment/>
-    <x-post-comment/>
+
+  @foreach($post->comments as $comment)
+    <x-post-comment :comment="$comment"/>
+    @endforeach
+ 
 
 
 
