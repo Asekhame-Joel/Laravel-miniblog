@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
+use App\Http\Middleware\MustbeAdmin;
 
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\SessionsController;
@@ -39,6 +41,19 @@ Route::post('login', [SessionsController::class, 'store']);
 Route::post('posts/{post:slug}/comments', [CommentController::class, 'store']);
 
 Route::post('newsletter', NewsletterController::class);
+// Route::get('posts/admin/create', [PostController::class, 'create'])->middleware('admin');
+
+Route::get('posts/admin/create', [AdminPostController::class, 'create'])->middleware(MustbeAdmin::class);
+Route::post('posts/admin', [AdminPostController::class, 'store'])->middleware(MustbeAdmin::class);
+Route::get('admin/posts', [AdminPostController::class, 'index'])->middleware(MustbeAdmin::class);
+
+Route::get('admin/posts/{post}/edit', [AdminPostController::class, 'edit'])->middleware(MustbeAdmin::class);
+
+
+
+
+
+
 
 
 

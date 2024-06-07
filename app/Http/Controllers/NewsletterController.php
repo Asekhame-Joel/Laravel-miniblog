@@ -7,13 +7,15 @@ use Illuminate\Http\Request;
 
 class NewsletterController extends Controller
 {
+
     public function __invoke(Newsletters $newsletter){
+
         request()->validate([
             'email' => 'required|email'
         ]);
 
         try {
-            $newsletter = new Newsletters;
+            // $newsletter = new Newsletters;
             $newsletter->subcribe(request('email'));
     
         } catch (\Exception $e) {

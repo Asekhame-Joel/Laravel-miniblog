@@ -2,9 +2,12 @@
 
 namespace App\Providers;
 
+use App\Services\Newsletters;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Model;
+use MailchimpMarketing\ApiClient;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +16,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        Model::unguard();
+        app()->bind(Newsletters::class, function () {
+            $client = new ApiClient();
+            $client->setConfig([
+                'apiKey' => config('services.mailchimp.key'),
+                'server' => 'us22'
+            ]);
+            return new Newsletters($client);
+        });
     }
 
     /**
@@ -21,7 +31,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-    
-    // Paginator::useTailwind();
+        Model::unguard();
+
+
+        // Paginator::useTailwind();
     }
 }

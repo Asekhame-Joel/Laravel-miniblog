@@ -5,6 +5,8 @@
             <!-- Article Image -->
             <a href="#" class="hover:opacity-75">
                 <img src="../images/illustration-1.png">
+                {{-- <img src="{{asset('storage/' . $post->thumbnail)}}"> --}}
+
             </a>
             <div class="bg-white flex flex-col justify-start p-6">
                 <a href="/categories/{{$post->category->slug}}" class="text-blue-700 text-sm font-bold uppercase pb-4">{{$post->category->name}}</a>
