@@ -18,6 +18,7 @@
                     <!-- Dropdown menu -->
                     <div x-show="open" @click.outside="open = false" class="absolute mt-2 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-32 dark:bg-gray-700">
                         <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                            @can('admin')
                             <li>
                                 <a href="/" class="{{ request()->is('/') ? 'block px-4 py-1 text-blue-500' : 'block px-4 py-1 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white' }}
                                 ">All Posts</a>
@@ -26,6 +27,7 @@
                                 <a href="/posts/admin/create" class="{{ request()->is('/posts/admin/create') ? 'block px-4 py-1 text-red-500' : 'block px-4 py-1 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white' }}
                                     ">New Posts</a>
                             </li>
+                            @endcan
 
                             <li>
                                 <a href="#" class="block px-4 py-1 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" x-data={} 
@@ -46,10 +48,11 @@
                 @guest   
                 <li><a class="hover:text-gray-200 hover:underline px-4" href="/register">Register</a></li>
                 <li><a class="hover:text-gray-200 hover:underline px-4" href="/login">Login</a></li>
+                @endguest
+
                 <li>
                     <a href="#newsletter" type="submit" class="py-3 px-5 w-full text-sm font-medium text-center text-white rounded-full border cursor-pointer bg-blue-500 border-blue-500 hover:bg-blue-400 focus:ring-4 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-400 dark:focus:ring-blue-300">Subscribe</a>
                 </li>
-                @endguest
             </ul>
         </nav>
     </div>

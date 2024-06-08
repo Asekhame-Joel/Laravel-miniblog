@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\Services\Newsletters;
 use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Model;
 use MailchimpMarketing\ApiClient;
+use App\Models\User;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -35,5 +37,10 @@ class AppServiceProvider extends ServiceProvider
 
 
         // Paginator::useTailwind();
+    Gate::define('admin', function(User $user){
+        return $user->username == 'joel12345';
+          
+        });
+    
     }
 }

@@ -13,18 +13,19 @@ class MustbeAdmin
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
-    public function handle(Request $request, Closure $next): Response
-    {
-       if(Auth::check()){
-          if(auth()->user()->username !== 'joel12345'){
-            abort(404);
-          }
+    //  */
+    // public function handle(Request $request, Closure $next): Response
+    // {
+    //    if(Auth::check()){
+    //       if(auth()->user()->username !== 'joel12345'){
+    //         abort(404);
+    //       }
 
-        }else{
-            abort(403, 'Unauthorized');
-        }
+    //     }else{
+    //         abort(403, 'Unauthorized');
+    //     }
         
-        return $next($request);
-    }
+    //     return $next($request);
+    // }
+    //using the Gate ability already in service container which handles middleware and authorization
 }

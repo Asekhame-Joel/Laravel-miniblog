@@ -25,8 +25,7 @@
                 <!-- Main Form Fields -->
                 <div class="w-3/4">
                     <h1 class="text-center px-5 py-5 bg-gray-100  text-lg rounded">Publish Post</h1>
-
-                    <x-form.form-container>
+ <x-form.form-container>
                         <x-form.input name="title"/>
                         <x-form.input name="thumbnail" type="file"/>
                         <x-form.textarea name="excerpts"/>
